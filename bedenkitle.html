@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>BKİ Hesaplayıcı</title>
+  <link rel="stylesheet" href="stil.css">
+  <style>
+    .uyari-kutu {
+      margin-top: 20px;
+      padding: 15px;
+      border: 2px solid #4caf50;
+      border-radius: 8px;
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      font-weight: bold;
+      display: none;
+      animation: fadein 0.8s ease-in-out;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    input {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header><h1>Beden Kitle İndeksi Hesaplama</h1></header>
+  <nav>
+      <a href="index.html">Anasayfa</a>
+       <a href="beslenme.html">Beslenme</a>
+     <a href="vitaminler.html">Vitaminler</a>
+    <a href="kalori.html">Kalori</a>
+    <a href="su.html">Su</a>
+    <a href="tarifler.html">Tarifler</a>
+    <a href="egzersiz.html">Egzersiz</a>
+    <a href="bedenkitle.html">BKİ Hesapla</a>
+    <a href="iletisim.html">İletişim</a>
+    <a href="form.html">Anket</a>
+  </nav>
+
+  <main>
+    <form onsubmit="return bkiHesapla()">
+      <label for="ad">Adınız:</label><br>
+      <input type="text" id="ad" name="ad" required><br>
+
+      <label for="yas">Yaşınız:</label><br>
+      <input type="number" id="yas" name="yas" required><br>
+
+      <label for="boy">Boyunuz (cm):</label><br>
+      <input type="number" id="boy" name="boy" required><br>
+
+      <label for="kilo">Kilonuz (kg):</label><br>
+      <input type="number" id="kilo" name="kilo" required><br>
+
+      <input type="submit" value="Hesapla">
+    </form>
+
+    <div id="mesaj" class="uyari-kutu"></div>
+  </main>
+
+  <script>
+    function bkiHesapla() {
+      const ad = document.getElementById("ad").value.trim();
+      const yas = parseInt(document.getElementById("yas").value);
+      const boy = parseFloat(document.getElementById("boy").value) / 100; // cm'yi metreye çevir
+      const kilo = parseFloat(document.getElementById("kilo").value);
+      const mesajAlani = document.getElementById("mesaj");
+
+      if (!ad || isNaN(yas) || isNaN(boy) || isNaN(kilo) || yas <= 0 || boy <= 0 || kilo <= 0) {
+        mesajAlani.textContent = "Lütfen tüm bilgileri doğru şekilde doldurun.";
+        mesajAlani.style.display = "block";
+        return false;
+      }
+
+      const bki = kilo / (boy * boy);
+      let mesaj = `${ad}, BKİ'niz: ${bki.toFixed(1)}. `;
+
+      if (bki < 18.5) {
+        mesaj += "Zayıfsınız, beslenmenizi artırmalısınız.";
+      } else if (bki < 25) {
+        mesaj += "İdeal kilodasınız, dengeli beslenmeye devam edin.";
+      } else if (bki < 30) {
+        mesaj += "Fazla kilolusunuz, beslenmenize dikkat etmelisiniz.";
+      } else {
+        mesaj += "Obezite sınırındasınız, sağlıklı beslenme ve egzersiz şart!";
+      }
+
+      mesajAlani.textContent = mesaj;
+      mesajAlani.style.display = "block";
+      return false; // sayfa yenilenmesin
+    }
+  </script>
+</body>
+</html>

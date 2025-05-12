@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Anket Sonucu</title>
+  <link rel="stylesheet" href="stil.css">
+</head>
+<body>
+  <header><h1>Gönderilen Bilgiler</h1></header>
+  <main>
+    <p>Adınız: <script>document.write(new URLSearchParams(window.location.search).get("ad"))</script></p>
+    <p>En sevdiğiniz sebze: <script>document.write(new URLSearchParams(window.location.search).get("sebze"))</script></p>
+    <p>Günde öğün sayısı: <script>document.write(new URLSearchParams(window.location.search).get("ogun"))</script></p>
+  </main>
+</body>
+</html>

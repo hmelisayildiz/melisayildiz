@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Su Tüketimi</title>
+  <link rel="stylesheet" href="stil.css">
+</head>
+<body>
+  <header><h1>Su Tüketimi</h1></header>
+  <nav>
+    <a href="index.html">Anasayfa</a>
+       <a href="beslenme.html">Beslenme</a>
+     <a href="vitaminler.html">Vitaminler</a>
+    <a href="kalori.html">Kalori</a>
+    <a href="su.html">Su</a>
+    <a href="tarifler.html">Tarifler</a>
+    <a href="egzersiz.html">Egzersiz</a>
+    <a href="bedenkitle.html">BKİ Hesapla</a>
+    <a href="iletisim.html">İletişim</a>
+    <a href="form.html">Anket</a>
+  </nav>
+<h2 style="text-align: center;">Günlük Su İhtiyacı</h2>
+
+<p>Günlük su ihtiyacı, kişinin kilosuna, yaşına, cinsiyetine, fiziksel aktivite seviyesine ve hava koşullarına göre değişiklik 
+    gösterebilir.
+     Genel bir kural olarak yetişkin bir bireyin günde en az <strong>2-2.5 litre</strong> su 
+     içmesi önerilir. Ancak bu miktar kişisel ihtiyaçlara göre değişebilir.</p>
+
+<p>Dünya Sağlık Örgütü’ne (WHO) ve birçok sağlık kuruluşuna göre günlük su tüketimi şu şekilde önerilmektedir:</p>
+
+<ul>
+  <li><strong>Kadınlar için:</strong> Günde 2.2 - 2.5 litre (yaklaşık 8-10 bardak)</li>
+  <li><strong>Erkekler için:</strong> Günde 2.5 - 3 litre (yaklaşık 10-12 bardak)</li>
+  <li><strong>Hamile ve emziren kadınlar için:</strong> Günde 3 litreye kadar</li>
+  <li><strong>Spor yapan bireyler için:</strong> Terleme yoluyla kaybedilen suyu yerine koymak için 3.5 - 4 litreye kadar çıkabilir</li>
+</ul>
+
+<p>Bu miktarlar yalnızca <strong>su tüketimini</strong> kapsar. Meyve, sebze, çay ve diğer sıvılar da su ihtiyacına katkıda bulunabilir.</p>
+
+
+    <h2>Günlük Su Tüketimi Hesaplama</h2>
+  <p>Kilonuzu girerek günlük ihtiyacınız olan su miktarını hesaplayabilirsiniz.</p>
+  <label>Kilonuz (kg): <input type="number" id="kilo"></label>
+  <button onclick="hesapla()">Hesapla</button>
+  <p id="sonuc"></p>
+  <script>
+    function hesapla() {
+      var kilo = document.getElementById('kilo').value;
+      var su = kilo * 0.033;
+      document.getElementById('sonuc').innerText = "Günlük ihtiyacınız: " + su.toFixed(2) + " litre su";
+    }
+  </script>
+</body>
+</html>
+
